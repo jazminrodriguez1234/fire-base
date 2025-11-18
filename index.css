@@ -1,0 +1,66 @@
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #a8e6cf, #dcedc1);
+    padding: 20px;
+    animation: fondoAnimado 6s infinite alternate;
+}
+
+@keyframes fondoAnimado {
+    0% { background: linear-gradient(135deg, #a8e6cf, #dcedc1); }
+    100% { background: linear-gradient(135deg, #ffd3b6, #ffaaa5); }
+}
+
+.tarjeta {
+    background: white;
+    padding: 25px;
+    border-radius: 20px;
+    width: 320px;
+    margin: auto;
+    text-align: center;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.tarjeta:hover {
+    transform: scale(1.03);
+    box-shadow: 0 12px 28px rgba(0,0,0,0.2);
+}
+
+.valor {
+    font-size: 24px;
+    margin: 12px 0;
+    color: #333;
+}
+
+#tempSuelo {
+    color: #ff8c42;
+    font-weight: bold;
+}
+
+#humedadSuelo {
+    color: #4aa96c;
+    font-weight: bold;
+}
+
+.estado {
+    font-size: 22px;
+    font-weight: bold;
+    margin-top: 20px;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.estado[data-estado="Regar"] {
+    background-color: #ff6b6b;
+    color: white;
+}
+
+.estado[data-estado="Estable"] {
+    background-color: #51cf66;
+    color: white;
+}
+
+.estado[data-estado="Muy Húmedo"] {
+    background-color: #339af0;
+    color: white;
+}
