@@ -2,27 +2,21 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Estado del Suelo</title>
     <link rel="stylesheet" href="index.css">
-    <style>
-        body { font-family: Arial, sans-serif; background: #eef2f3; padding: 20px; }
-        .tarjeta { background: white; padding: 20px; border-radius: 15px; width: 300px; margin: auto; text-align: center; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
-        .valor { font-size: 22px; margin: 10px 0; }
-        .estado { font-size: 20px; font-weight: bold; margin-top: 15px; }
-    </style>
 </head>
+
 <body>
-    <div class="tarjeta">
-        <h2>Condición del Suelo</h2>
-        <div id="tempSuelo" class="valor">Temperatura: -- °C</div>
-        <div id="humedadSuelo" class="valor">Humedad: -- %</div>
-        <div id="estadoSuelo" class="estado">Estado: --</div>
+    <h1>Monitoreo del Suelo</h1>
+
+    <div class="contenedor">
+        <p>Temperatura del suelo: <span id="temp"></span> °C</p>
+        <p>Humedad del suelo: <span id="hum"></span> %</p>
+        <p>Estado: <span id="estado"></span></p>
     </div>
 
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-app.js";
-        import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-database.js";
 
         let configuracionFirebase = {
             apiKey: "AIzaSyDmN4qBz3Aw5x7GO0Z-jB_viG6esOtbFVI",
@@ -35,30 +29,8 @@
         };
 
         let aplicacion = initializeApp(configuracionFirebase);
-        let baseDatos = getDatabase(aplicacion);
-
-        let referenciaDatos = ref(baseDatos, "sensores/suelo");
-
-        onValue(referenciaDatos, function(datos) {
-            let info = datos.val();
-            let temp = info.temperatura;
-            let humedad = info.humedad;
-
-            document.querySelector("#tempSuelo").innerHTML = "Temperatura: " + temp + " °C";
-            document.querySelector("#humedadSuelo").innerHTML = "Humedad: " + humedad + " %";
-
-            let estado = "";
-
-            if (humedad < 40) {
-                estado = "Regar";
-            } else if (humedad >= 40 && humedad <= 70) {
-                estado = "Estable";
-            } else {
-                estado = "Muy Húmedo";
-            }
-
-            document.querySelector("#estadoSuelo").innerHTML = "Estado: " + estado;
-        });
     </script>
+
+    <script src="index.js"></script>
 </body>
 </html>

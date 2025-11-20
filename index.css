@@ -1,66 +1,80 @@
 body {
-    font-family: Arial, sans-serif;
-    background: linear-gradient(135deg, #a8e6cf, #dcedc1);
-    padding: 20px;
-    animation: fondoAnimado 6s infinite alternate;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #a8ff78, #78ffd6);
+    text-align: center;
+    padding-top: 40px;
+    animation: fondoAnimado 6s infinite alternate ease-in-out;
 }
 
 @keyframes fondoAnimado {
-    0% { background: linear-gradient(135deg, #a8e6cf, #dcedc1); }
-    100% { background: linear-gradient(135deg, #ffd3b6, #ffaaa5); }
+    0% { background: linear-gradient(135deg, #a8ff78, #78ffd6); }
+    50% { background: linear-gradient(135deg, #f6d365, #fda085); }
+    100% { background: linear-gradient(135deg, #96e6a1, #d4fc79); }
 }
 
-.tarjeta {
-    background: white;
-    padding: 25px;
-    border-radius: 20px;
+h1 {
+    font-size: 38px;
+    font-weight: bold;
+    color: #ffffff;
+    text-shadow: 2px 2px 8px #00000050;
+    animation: tituloBrillo 2s infinite alternate;
+}
+
+@keyframes tituloBrillo {
+    0% { opacity: 0.8; }
+    100% { opacity: 1; }
+}
+
+.contenedor {
+    background: #ffffff;
     width: 320px;
     margin: auto;
-    text-align: center;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 0 18px #00000050;
+    font-size: 22px;
+    animation: rebote 1.2s ease-out;
+    transition: transform 0.4s ease;
 }
 
-.tarjeta:hover {
-    transform: scale(1.03);
-    box-shadow: 0 12px 28px rgba(0,0,0,0.2);
+.contenedor:hover {
+    transform: scale(1.05);
 }
 
-.valor {
-    font-size: 24px;
-    margin: 12px 0;
+@keyframes rebote {
+    0% { transform: translateY(-40px) scale(0.9); opacity: 0; }
+    100% { transform: translateY(0) scale(1); opacity: 1; }
+}
+
+p {
+    margin: 15px 0;
     color: #333;
 }
 
-#tempSuelo {
-    color: #ff8c42;
+#temp, #hum {
     font-weight: bold;
+    color: #1a7f5a;
+    animation: parpadeo 2s infinite;
 }
 
-#humedadSuelo {
-    color: #4aa96c;
-    font-weight: bold;
+@keyframes parpadeo {
+    0% { opacity: 1; }
+    50% { opacity: .6; }
+    100% { opacity: 1; }
 }
 
-.estado {
-    font-size: 22px;
+#estado {
     font-weight: bold;
-    margin-top: 20px;
-    padding: 10px;
+    padding: 8px 14px;
     border-radius: 10px;
+    font-size: 24px;
+    color: white;
+    background: #3b82f6;
+    animation: cambioColor 3s infinite;
 }
 
-.estado[data-estado="Regar"] {
-    background-color: #ff6b6b;
-    color: white;
-}
-
-.estado[data-estado="Estable"] {
-    background-color: #51cf66;
-    color: white;
-}
-
-.estado[data-estado="Muy Húmedo"] {
-    background-color: #339af0;
-    color: white;
+@keyframes cambioColor {
+    0% { background: #3b82f6; }
+    50% { background: #16a34a; }
+    100% { background: #ef4444; }
 }
