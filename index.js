@@ -1,38 +1,25 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-app.js";
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-app.js";
+import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-database.js";
 
-let configuracionFirebase = {
-    apiKey: "AIzaSyDmN4qBz3Aw5x7GO0Z-jB_viG6esOtbFVI",
-    authDomain: "huertili-datini.firebaseapp.com",
-    databaseURL: "https://huertili-datini-default-rtdb.firebaseio.com",
-    projectId: "huertili-datini",
-    storageBucket: "huertili-datini.firebasestorage.app",
-    messagingSenderId: "675544360936",
-    appId: "1:675544360936:web:e50313a4113bf99980265d"
+const firebaseConfig = {
+    apiKey: "AIzaSyCrB4xgCBRmpujDcvOOihSVZ6MIFOPE56M",
+    authDomain: "proyectoclase1-2025.firebaseapp.com",
+    databaseURL: "https://proyectoclase1-2025-default-rtdb.firebaseio.com",
+    projectId: "proyectoclase1-2025",
+    storageBucket: "proyectoclase1-2025.firebasestorage.app",
+    messagingSenderId: "822869341917",
+    appId: "1:822869341917:web:8d4d76a6493df78963cd34"
 };
 
-let aplicacion = initializeApp(configuracionFirebase);
+const app = initializeApp(firebaseConfig);
+const db = getDatabase(app);
+let parrafo = document.querySelector("p");
+const refDatos = ref(db, "/huerta");
 
-let url = "https://huertili-datini-default-rtdb.firebaseio.com/suelo.json";
-
-let elementoTemp = document.querySelector("#temp");
-let elementoHum = document.querySelector("#hum");
-let elementoEstado = document.querySelector("#estado");
-
-let obtenerDatos = async function () {
-    let respuesta = await fetch(url);
-    let datos = await respuesta.json();
-    let temperatura = data.temperatura;
-    let humedad = data.humedadAire;
-    elementoTemp.textContent = temperatura;
-    elementoHum.textContent = humedad;
-    let estado = "";
-    if (humedad < 40) {
-        estado = "Regar";
-    } else {
-        estado = "Estable";
-    }
-    elementoEstado.textContent = estado;
-};
-
-setInterval(obtenerDatos, 2000);
-obtenerDatos();
+onValue(refDatos, (snapshot) => {
+    console.log(snapshot.val())
+    let huerta = snapshot.val()
+    hum.textContent = `La huerta tiene una temperatura en el suelo de ${huerta.tempSuelo}° y de humedad de ${huerta.humSuelo}`
+    temp.textContent = `La huerta tiene una temperatura en el suelo de ${huerta.tempSuelo}° y de humedad de ${huerta.humSuelo}`
+    estado.textContent = `La huerta tiene una temperatura en el suelo de ${huerta.tempSuelo}° y de humedad de ${huerta.humSuelo}`
+})
