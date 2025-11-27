@@ -1,4 +1,4 @@
-body {
+ody {
     font-family: 'Poppins', sans-serif;
     background: linear-gradient(135deg, #a8ff78, #78ffd6);
     text-align: center;
@@ -6,11 +6,13 @@ body {
     animation: fondoAnimado 6s infinite alternate ease-in-out;
 }
 
+
 @keyframes fondoAnimado {
     0% { background: linear-gradient(135deg, #a8ff78, #78ffd6); }
     50% { background: linear-gradient(135deg, #f6d365, #fda085); }
     100% { background: linear-gradient(135deg, #96e6a1, #d4fc79); }
 }
+
 
 h1 {
     font-size: 38px;
@@ -20,10 +22,12 @@ h1 {
     animation: tituloBrillo 2s infinite alternate;
 }
 
+
 @keyframes tituloBrillo {
     0% { opacity: 0.8; }
     100% { opacity: 1; }
 }
+
 
 .contenedor {
     background: #ffffff;
@@ -37,19 +41,23 @@ h1 {
     transition: transform 0.4s ease;
 }
 
+
 .contenedor:hover {
     transform: scale(1.05);
 }
+
 
 @keyframes rebote {
     0% { transform: translateY(-40px) scale(0.9); opacity: 0; }
     100% { transform: translateY(0) scale(1); opacity: 1; }
 }
 
+
 p {
     margin: 15px 0;
     color: #333;
 }
+
 
 #temp, #hum {
     font-weight: bold;
@@ -57,11 +65,13 @@ p {
     animation: parpadeo 2s infinite;
 }
 
+
 @keyframes parpadeo {
     0% { opacity: 1; }
     50% { opacity: .6; }
     100% { opacity: 1; }
 }
+
 
 #estado {
     font-weight: bold;
@@ -72,6 +82,7 @@ p {
     background: #3b82f6;
     animation: cambioColor 3s infinite;
 }
+
 
 @keyframes cambioColor {
     0% { background: #3b82f6; }
